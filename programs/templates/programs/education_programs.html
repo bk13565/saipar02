@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <nav id="navbar-pubs" class="navbar navbar-light align-items-stretch p-3 sticky-top">
+                <a class="navbar-brand pt-5 fs-5" href="#">Educational Programs</a>
+                <nav class="nav nav-pills flex-column">
+                    <ul class="navbar-nav text-center">
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle text-dark bg-info m-1" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Lecture Series
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#goma-lecture">Lameck Goma Annual Lecture</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#fry-lecture">James & Suzanna Fry Annual Lecture</a></li>
+                                </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle text-dark bg-info m-1" href="#fellowships" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Fellowships
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#anglin-fellowship">Douglas & Mary Anglin Fellowship</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#kent-fellowship">Robert & Barbara Kent Fellowship</a></li>
+                                </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#internship">Internship Programme</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#affiliation">Affiliate Programme</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#csp">Cornell Summer Programme</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1 ps-2 pe-2" href="#cbp">Capacity Building Programme</a>
+                        </li>
+                    </ul>
+                </nav>
+            </nav>
+        </div>
+
+        <div class="container col-9">
+            <!--Lecture Series-->
+			<div class="education">
+				<div data-bs-spy="scroll" data-bs-target="#navbar-pubs" data-bs-offset="0" tabindex="0">
+					<div class="">
+					<h3 id="lecture-series" class="pt-5 display-6">Lecture Series</h3>
+					<p class="pe-5"></p>
+
+                    <div class="">
+                        <h5 id="goma-lecture" class=""> Lameck Goma Annual Lecture </h5>
+                        <p class="pe-5">
+                        SAIPAR has established the Goma Lecture Series, an Annual Lecture, in honour of the late 
+                        Professor Lameck Kazembe  Haza Goma, who served with distinction as the Vice-Chancellor of 
+                        the University of Zambia from 1969 to 1976.  Professor Goma was born on  April 8, 1930 in 
+                        Lundazi, Zambia.  He obtained his Bachelor of Science degree at the University of Fort Hare,
+                        South Africa and his Doctor of Philosophy degree at Cambridge University, in the United 
+                        Kingdom.  He taught  zoology at Makerere University, Uganda and at the University of Ghana,
+                        Legon, Ghana. He joined the University of Zambia at its founding in 1966.  He served as 
+                        Pro-Vice-Chancellor of the University of Zambia from 1968 to 1969 and in 1969 was appointed 
+                        Vice-Chancellor, becoming the first Zambian to hold the position.  Professor Goma was also  
+                        a distinguished  public servant. He served Ministry of General Education and Culture, the 
+                        Ministry of Foreign Affairs, and the Ministry of Higher Education, Science and Technology 
+                        under President Kenneth David Kaunda.  He passed on  January  11, 2004.
+                        </p>
+                        <div class="container col-md-6">
+                            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{% static 'images/lecture_series/lameck-goma-awarding-certificate.jpeg' %}" class="d-block w-100" alt="..." width="20" height="300">
+                                        <figcaption class="figure-caption text-center text-dark pb-2">
+                                            Professor Lameck Goma, Minister of Education presents a certificate to Mr. Resson Muchende one of the 
+                                            graduates in Business Administration during the graduation ceremony at Evelyn Hone College of Applied 
+                                            Arts and Commerce.
+                                        </figcaption>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static 'images/lecture_series/lameck-goma-giving-speech.jpeg' %}" class="d-block w-100" alt="..." width="20" height="300">
+                                        <figcaption class="figure-caption text-center text-dark pb-2">
+                                            Minister of Education Prof Lameck Goma addressing the seminar on training for self-employment of School 
+                                            leavers at the UNZA Ridgeway Campus in Lusaka. Left is the Member of Central Committee Mr. Bob Litana.
+                                        </figcaption>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static "images/lecture_series/lameck-goma-meeting.jpeg" %}" class="d-block w-100" alt="..." width="20" height="300">
+                                        <figcaption class="figure-caption text-center text-dark pb-2">
+                                            Portuguese Charge D’affairs Mr Vasco Valente calls on Foreign Affairs Professor Lameck Goma (5 November 1981).
+                                        </figcaption>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static "images/lecture_series/lameck-goma-with-nicaraguan-ambassador.jpeg" %}" class="d-block w-100" alt="..." width="20" height="300">
+                                        <figcaption class="figure-caption text-center text-dark pb-2">
+                                            Nicaraguan Ambassador to Zambia presenting copies of letters credency to the Foreign Minister Mr. Lameck Goma, 12 June 1981.
+                                        </figcaption>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static "images/homepage-images/Lameck-Goma-welcomes-Ramphal-1980.jpeg" %}" class="d-block w-100" alt="..." width="20" height="300">
+                                        <figcaption class="figure-caption text-center text-dark pb-2">
+                                            Lameck Goma welcomes Sonny Ramphal, Secretary General Commonwealth, 1980.
+                                        </figcaption>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static "images/lecture_series/Minister-Lameck-Goma-looking-at-an-automatic-electric-rail-made.jpeg" %}" class="d-block w-100" alt="..." width="20" height="300">
+                                        <figcaption class="figure-caption text-center text-dark pb-2">
+                                            President Kaunda, Prime Minister Mr. Daniel Lisulo, and Education Minister Lameck Goma looking at an 
+                                            automatic electric rail made by Mr. Elias Zimba of Chizongwe Secondary School during the Jets exhibition 
+                                            held at Lusaka's Showground, 16 Aug 1978.
+                                        </figcaption>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <p class="pe-5">
+                        Professor Goma was a great scholar, an excellent researcher, and a distinguished public servant.
+                        He displayed extraordinary leadership and worked tirelessly to build the University of Zambia.  
+                        One of Professor Goma’s lasting legacies is the Staff Development Fellowship Programme at the 
+                        University of Zambia, which he established in 1970.  The programme gave many Zambians an 
+                        opportunity to access higher  university education abroad and  to join the academy.
+                        </p>
+
+                        <p class="pe-5">
+                        Below are some of the speeches and writings, as well as photographs of Lameck Goma. We hope you 
+                        enjoy the opportunity to further explore the exemplary career and life of this extraordinary man.
+                        </p>
+
+                        <p class="pe-5 ms-5">
+                        <a style="text-decoration: none;" href="#" class="text-center">Goma Address to the Seventh Graduation Ceremony of the University of Zambia</a>
+                        </p>
+                    </div>
+
+                    <div class="">
+                        <h5 id="fry-lecture" class=""> James and Suzanna Fry Annual Lecture </h5>
+                        <p class="pe-5">
+                        SAIPAR established the James and Susanna Fry Annual Lecture in Economics in 2014 in honour of
+                        Dr. James Fry. Dr. Fry served as one of the founding lecturers in the Department of Economics
+                        at the University of Zambia. He was also a founding member of the Economics Club of Lusaka, 
+                        the forerunner of the Economics Association of Zambia. After leaving the University of Zambia, 
+                        he continued with his research interest and work on Zambia.
+                        </p>
+
+                        <p class="pe-5">
+                        The SAIPAR Board decided to honour the contribution to education of Dr. James Fry by 
+                        establishing an Annual Lecture Series in Economics to be known as the James and Susanna Fry 
+                        Annual Lecture in Economics. Once a year, SAIPAR, through the James and Susanna Fry Annual 
+                        Lecture in Economics, will invite a prominent academic or leader of industry to come to Lusaka 
+                        and give a public lecture. The SAIPAR Board has also established an endowment to support the 
+                        lecture series.
+                        </p>
+
+                        <p class="pe-2">
+                        For any further information on the James and Susanna Fry Annual Lecture Series, contact the 
+                        Director of Research and Programmes at <a style="text-decoration: none;" href="mailto: marja.hinfelaar@saipar.org"> marja.hinfelaar@saipar.org</a>.
+                        </p>
+
+                    </div>
+                </div>
+            
+                <!--Fellowships-->
+				<div data-bs-spy="scroll" data-bs-target="#navbar-pubs" data-bs-offset="0" tabindex="0">
+					<div class="">
+					<h3 id="fellowships" class="pt-2 display-6">Fellowships</h3>
+					<p class="pe-5"></p>
+
+                    <div class="">
+                        <h5 id="anglin-fellowship" class=""> Douglas and Mary Anglin Fellowship </h5>
+                        <p class="pe-5">
+                        SAIPAR established the Douglas and Mary Anglin Fellowship in 2014 in honour of Professor 
+                        Douglas Anglin’s contribution to education in Zambia. Professor Anglin was the founding 
+                        Vice Chancellor of the University of Zambia. During his term, he laid a firm foundation for 
+                        the development of Zambia’s first university. As the Independent University Grants Committee 
+                        put it in 1969, “A first class institution has been developed to a remarkably high degree in 
+                        a very short space of time. We feel that the highest praise is due to the retiring Vice 
+                        Chancellor for this achievement”.
+                        </p>
+
+                        <p class="pe-5">
+                        After leaving the University of Zambia, Professor Anglin continued with his research on Zambia
+                        and continued to promote postgraduate training for students from Zambia. In 2008, he established
+                        the Anglin-Zambia Scholarship Scheme to enable academic staff on the Staff Development Programme 
+                        at the University of Zambia pursue postgraduate education at Carleton University in Canada. In 
+                        2010, for his significant contribution to education in Zambia, the University of Zambia awarded 
+                        him an honorary doctorate degree.
+                        </p>
+
+                        <p class="pe-5">
+                        Douglas and Mary Anglin Fellowship will be awarded once a year to an outstanding social science
+                        graduate to spend six months at SAIPAR doing research in the field of the fellow’s own academic 
+                        interest. SAIPAR has set up an endowment fund to support the activity and its continued 
+                        sustainability.
+                        </p>
+
+                        <p class="pe-5">
+                        The idea of the fellowship is that SAIPAR, through the Douglas and Mary Anglin Fellowship, will 
+                        contribute not only to the building of research capacity of the recipient of the fellowship, but 
+                        will also make a significant contribution to the attainment of the goals of SAIPAR.
+                        </p>
+                        <p class="pe-2">
+                        For any further information on the scheme, contact the Director of Research and Programmes at 
+                        <a style="text-decoration: none;" href="mailto: marja.hinfelaar@saipar.org"> marja.hinfelaar@saipar.org</a>.
+                        </p>
+                    </div>
+
+                    <div class="">
+                        <h5 id="kent-fellowship" class=""> Robert and Barbara Kent Fellowship </h5>
+                        <p class="pe-5">
+                        The Robert and Barbara Kent Fellowship was established by the SAIPAR Board in 2014 in honour of
+                         Professor Robert Kent. The Fellowship Scheme is a recognition of the contribution of Prof. 
+                         Kent to legal education in Zambia. Prof. Kent served with distinction as the second Dean of 
+                         the School of Law of the University of Zambia. He helped establish the Law Development 
+                         Commission of Zambia and has helped many lawyers in Zambia pursue postgraduate education in 
+                         law.
+                        </p>
+
+                        <p class="pe-5">
+                       The SAIPAR Board decided to honour the contribution of Prof. Robert Kent by establishing a 
+                       fellowship named the Robert and Barbara Kent Fellowship. This is tenable at the Institute. The 
+                       fellowship will be awarded once a year to an outstanding law graduate to come to SAIPAR and 
+                       spend six months doing research in the field of the fellow’s own academic interest. The SAIPAR 
+                       Board also established an endowment fund to support the Robert and Barbara Kent Fellowship so 
+                       that the activities can go on forever.
+                        </p>
+
+
+                        <p class="pe-5">
+                        The idea is that SAIPAR, through the Robert and Barbara Kent Fellowship, will contribute not 
+                        only to the building of research capacity of the recipient of the fellowship, but it will also 
+                        make a significant contribution to the attainment of the goals of SAIPAR.
+                        </p>
+
+                        <p class="pe-5">
+                        For any further information on the James and Susanna Fry Annual Lecture Series, contact the 
+                        Director of Research and Programmes at <a style="text-decoration: none;" href="mailto: marja.hinfelaar@saipar.org"> marja.hinfelaar@saipar.org</a>.
+                        </p>
+
+                    </div>
+
+                </div>
+            
+
+                        <!--Internship Programme-->
+
+            
+				<div data-bs-spy="scroll" data-bs-target="#navbar-pubs" data-bs-offset="0" tabindex="0">
+					<div class="">
+					<h4 id="internship" class="pt-2 display-6">Internship Programme</h4>
+					<p class="pe-5">
+                    The Southern African Institute for Policy and Research (SAIPAR) aims to be Southern Africa’s 
+                    leading research authority, knowledge centre, and dialogue facilitator concerning policy-oriented
+                    issues and development. SAIPAR coordinates an Internship Programme for recent graduates of 
+                    undergraduate programmes in the social sciences and development. As a function of its capacity 
+                    building programme, SAIPAR’s internship programme is designed to give post-baccalaureate students
+                    the opportunity to build research, publishing, and administration skills in an academic setting.
+                    It aims at providing interns an opportunity to share their experiences and gain and improve 
+                    skills in research in the social sciences and development. This is done through research 
+                    assignments and working on SAIPAR programmes. SAIPAR accepts post-baccalaureate and graduate 
+                    interns from Zambian, Southern African, and foreign universities.
+                    </p>
+                    <p class="ms-5"><a class="" style="text-decoration: none;" href="{% static "programs/education_programs/internships/SAIPAR_Internship-Programme_Guidelines1.pdf" %}"> SAIPAR_Internship Programme_Guidelines</a></p>
+                    <p class="ms-5"><a class="text-center" style="text-decoration: none;" href="{% static "programs/education_programs/internships/SAIPAR_Internship-Programme_Application.pdf" %}"> SAIPAR Internship Programme Application</a></p>
+                </div>
+            
+
+                        <!--Affiliation Programme-->
+				<div data-bs-spy="scroll" data-bs-target="#navbar-pubs" data-bs-offset="0" tabindex="0">
+					<div class="">
+					<h4 id="affiliation" class="pt-2 display-6">Affiliate Programme</h4>
+					<p class="pe-5">
+                    The Southern African Institute for Policy and Research (SAIPAR) grants affiliation to select 
+                    researchers and scholars already established and distinguished in their respective fields and to 
+                    scholars conducting doctoral or post-doctoral research in Zambia. Research must relate to the 
+                    fields covered by or adjacent to SAIPAR’s own research programs and interests. SAIPAR offers four 
+                    categories for affiliation: (a) Fellow – Permanent, (b) Fellow – Visiting, (c) Associate, and (d) 
+                    Network.
+                    </p>
+                    <p>Visiting Fellow, Associate, and Network Member are titles conferred by SAIPAR upon persons who 
+                    typically have an academic or equivalent appointment at another reputable research institution or 
+                    university, and who wish to spend time conducting research in Zambia and with SAIPAR. Permanent 
+                    Fellow Members will be invited by SAIPAR for collaboration on SAIPAR research and programmes. 
+                    Participants in the Affiliate Programme will be entitled to use SAIPAR facilities where feasible 
+                    and will be entitled to use of the SAIPAR library.
+                    </p>
+                    <p>Further information on the Affiliation Programme can be found in the Programme Guidelines, 
+                    downloadable <a style="text-decoration: none;" href="{% static "programs/education_programs/affiliation/SAIPAR_Affiliation-Programme-Guidelines.pdf" %}"> here</a>.</p>
+                </div>
+            
+
+                         <!--Cornell Summer Program -->
+            
+				<div data-bs-spy="scroll" data-bs-target="#navbar-pubs" data-bs-offset="0" tabindex="0">
+					<div class="">
+					<h4 id="csp" class="pt-2 display-6">Cornell Summer Program</h4>
+					<p class="pe-5">
+                    The SAIPAR/Cornell University Summer Program was established in 2013 order to facilitate 
+                    international academic exchange, to develop academic and scientific relationships, and is also in
+                    support of collaborative research activities Cornell University and SAIPAR.
+                    </p>
+                    <p>The overall Cornell Summer Program objectives are:
+                        <ol>
+                            <li> to develop the capacity of Cornell students to apply their previous academic knowledge
+                            to their field experience in Lusaka to fully understand the multidisciplinary nature of
+                            global health and labor relations, and
+                            </li>
+                            <li> to provide opportunities for the cultivation of relationships between Cornell students,
+                            Zambian students, SAIPAR staff, and Zambian home stay families. The primary activity toward
+                            this objective will be the development of an 8-week summer program to develop students’ 
+                            ability to effectively research health- and policy-related topics and contribute to SAIPAR’s
+                            mission of cultivating research and dialogue around policy-oriented issues.
+                            </li>
+                        </ol>
+                    </p>
+                    <p>A home stay program will further enhance cross-cultural exchange and the development of relationships.</p>
+                </div>
+        
+
+                           <!--Capacity Building Programme-->
+				<div data-bs-spy="scroll" data-bs-target="#navbar-pubs" data-bs-offset="0" tabindex="0">
+					<div class="">
+					<h4 id="cbp" class="pt-2 display-6">Capacity Building Programme</h4>
+					<p class="pe-5">
+                    SAIPAR undertakes capacity building events that are aimed at raising the level of professional
+                    competence and capacity of professionals in Zambia.
+                    </p>
+                    <p>In the field of law, SAIPAR organized a workshop on Business Law, which was held in Lusaka 
+                    from 7th January to 11th January 2013.
+                    </p>
+                    <p>As a function of the <a style="text-decoration: none;" href="#affiliation">Affiliate Programme</a>, SAIPAR has begun hosting 
+                    research workshops to bring together PhD and post-doc researchers conducting fieldwork in Zambia. 
+                    The first Research Workshop was held in August 2013, and brought together eight researchers 
+                    discussing their specific projects and receiving commentary on the theoretical and practical issues
+                     associated with their fieldwork.</p>
+                    <p>The newest addition to the SAIPAR workshop series is the Publication Workshop – the first of 
+                    which was held on 20 November. The Publication workshop is targeted to university lecturers, PhD 
+                    students, and SAIPAR affiliates, with the goal to build local capacity in publishing. The first 
+                    workshop will focued on the writing and submission of journal articles. A series of publishing 
+                    workshops are planned in conjunction with the University of Zambia (UNZA) and other research 
+                    institutions in 2014.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

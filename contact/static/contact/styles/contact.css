@@ -1,0 +1,38 @@
+/* 
+body {
+	max-width:max-content;
+	height: 500px;
+	padding-left: 200px;
+	padding-bottom: 300px;
+}
+
+h3 {
+	color: black;
+	font-size: xx-large;
+	font-family: 'Courier New', Courier, monospace;
+	font-style: oblique;
+	padding-top: 50px;
+}
+
+.container{
+	display: flexbox;
+	color: teal;
+	padding-left: 200px;
+}
+
+.contactForm p {
+	font-size: medium;
+	font-style: italic;
+}
+
+input[type=text], input[type=email], textarea {
+	width: 95%;
+	padding: 6px 20px;
+	display: inline-block;
+   }
+
+strong{
+	font-style: italic;
+	font-size: large;
+	font-family:'Times New Roman', Times, serif;
+} */

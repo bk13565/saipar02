@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid">
+{% comment %} ## main code {% endcomment %}
+    <div class="row">
+        <div class="col-3">
+            <nav id="navbar-pubs" class="navbar navbar-light align-items-stretch p-3 sticky-top">
+                <a class="navbar-brand pt-5 fs-5" href="#">Research Members</a>
+                {% comment %} <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>                 {% endcomment %}
+                <nav class="nav nav-pills flex-column">
+                    {% comment %} <div class="collapse navbar-collapse" id="navbarSupportedContent"> {% endcomment %}
+                        <ul class="navbar-nav text-center">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1" href="#staff">Research Staff</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1" href="#research">Research Affiliates</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1" href="#saipar-fellows">SAIPAR Fellows</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1" href="#kent-fellows">Robert Kent Fellows</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1" href="#interns">Interns</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1 p-2" href="/people/">Back To SAIPAR Members</a>
+                            </li>
+                        </ul>
+                    {% comment %} </div> {% endcomment %}
+                </nav>
+            </nav>
+        </div>
+
+        <div class="container col-9 p-3">
+            {% if research_staff %}
+                <h3 id="staff"> Research Staff </h3>
+
+                <div class="container row row-cols-1 row-cols-md-3 g-4">
+                        {% for person in research_staff %}
+                            <div class="col">
+                                <div class="card h-100">
+                                    {% if person.image %}
+                                            <img src={{ person.image_url | default_if_none:"#"}} class="card-img-top rounded" alt="...">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ person.name }}</h5>
+                                        <p class="card-text">{{ person.title }}</p>
+                                        {% if person.email %}
+                                            <a class="card-text" style="text-decoration: none;" href="mailto:{{ person.email }}">{{ person.email }}</a>
+                                        {% endif %}
+                                    </div>
+                                </div> 
+                            </div>
+                        {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if research_affiliates %}
+
+                <h3 class="p-3" id="research"> Current Affiliates </h3>
+
+                {% for person in research_affiliates %}
+                    <div class="row justify-content-center">
+                        <div class="card mb-3" style="max-width: 700px;">
+                            <div class="row g-0">
+                                {% if person.image %}
+                                    <div class="p-3 col-md-4">
+                                        <img src={{ person.image_url | default_if_none:"#"}} class="img-fluid rounded" alt="...">
+                                    </div>
+                                {% endif %}
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ person.name }}</h5>
+                                        <p class="card-text">{{ person.bio }}</p>
+                                        {% if person.email %}
+                                            <a class="card-text" style="text-decoration: none;" href="mailto:{{ person.email }}">{{ person.email }}</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+            {% comment %} # fellows {% endcomment %}
+            {% if saipar_fellows %}
+
+                <h3 class="p-3" id="saipar-fellows"> SAIPAR Fellows </h3>
+
+                {% for person in saipar_fellows %}
+                    <div class="row justify-content-center">
+                        <div class="card mb-3" style="max-width: 700px;">
+                            <div class="row g-0">
+                                    <div class="p-3 col-md-4">
+                                        <img src={{ person.image_url | default_if_none:"#"}} class="img-fluid rounded" alt="...">
+                                    </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ person.name }}</h5>
+                                        <p class="card-text">{{ person.bio }}</p>
+                                        {% if person.email %}
+                                            <a style="text-decoration: none;" class="card-text" href="mailto:{{ person.email }}">{{ person.email }}</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+            {% comment %} # kent ws {% endcomment %}
+            {% if kent_fellows %}
+
+                <h3 class="p-3" id="kent-fellows"> Robert Kent Fellows </h3>
+
+                {% for person in kent_fellows %}
+                    <div class="row justify-content-center">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                {% if person.image %}
+                                    <div class="p-3 col-md-4">
+                                        <img src={{ person.image_url | default_if_none:"#"}} class="img-fluid rounded" alt="...">
+                                    </div>
+                                {% endif %}
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ person.name }}</h5>
+                                        <p class="card-text">{{ person.bio }}</p>
+                                        {% if person.email %}
+                                            <a class="card-text" style="text-decoration: none;" href="mailto:{{ person.email }}">{{ person.email }}</a>
+                                        {% endif %}                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+            {% comment %} # fellows {% endcomment %}
+            {% if interns %}
+
+                <h3 class="p-3" id="interns"> Interns </h3>
+
+                {% for person in interns %}
+                    <div class="row">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                {% if person.image %}
+                                    <div class="p-3 col-md-4">
+                                        <img src={{ person.image_url | default_if_none:"#"}} class="img-fluid rounded" alt="...">
+                                    </div>
+                                {% endif %}
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ person.name }}</h5>
+                                        <p class="card-text">{{ person.bio }}</p>
+                                        {% if person.email %}
+                                            <a class="card-text" href="mailto:{{ person.email }}">{{ person.email }}</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+    
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+<div class="row justify-content-center">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

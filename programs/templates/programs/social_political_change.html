@@ -1,0 +1,27 @@
+{% extends "base.html"%} 
+{% block content %} 
+{% load static %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-9 pt-2 m-2">
+            <h5 class="display-6">Social and Political Change</h5>
+            <p class="pt-1 fw-normal fs-6">The Social and Political Change division in SAIPAR operates through a Research Group that comprises of SAIPAR research staff and researchers and scholars from collaborative institutions. The division aims to
+            improve the understanding of social and political change in Zambia and Southern Africa. It seeks to do this by conducting research on different thematic areas and topics in history, politics and social sciences. The Social and Political
+            Change division is established as SAIPAR’s leader in undertaking, facilitating and coordinating high-quality research and analysis, training and networking, and policy and academic dialogue and debate.</p>
+            {% if projects %}
+                <h6><i>Social and Political Change Projects</i></h6>
+                <div class="container justify-content-center">
+                    <ol>
+                        {% for project in projects %}
+                            <li>
+                                <p><a href="{{project.link}}" style="text-decoration: none;">{{ project.project }}</a></p>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

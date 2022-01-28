@@ -1,0 +1,112 @@
+{% extends "base.html"%}
+{% block content %}
+<body>
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap ">
+        {% if events %}
+            <div class="pt-3 w-full mb-3 py-6 flex justify-between items-center border-p border-gray-200">
+                <h3 class="">Upcoming Events</h3>
+            </div>
+            <hr>
+
+            <div class="flex flex-wrap -m-4">
+                <div class="row">
+                    {% for event in events %}
+                            <div class="col-sm-6">
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ event.title }}</h5>
+                                        <p class="card-text">Date : {{ event.date |truncatechars:12}}</p>
+                                        <p> Time : {{ event.time }}</p>
+                                        {% if event.link %}
+                                            <a href="{{ event.link }}" class="btn btn-primary">Event Link</a>
+                                        {% endif %}
+                                        {% if event.upload_link %}
+                                            <a href="/{{ event.upload_link }}/" class="btn btn-primary">Event Description</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                </div>
+        {% endif %}
+
+        <div class="mt-3 flex flex-wrap -m-4">
+            {% if past_events %}
+                <div class="w-full mb-6 py-6 flex justify-between items-center border-p border-gray-200">
+                    <h3>Past Events</h3>
+                </div>
+                <hr>
+
+                <div class="flex flex-wrap -m-4">
+                    <div class="row">
+                        {% for event in past_events %}
+                                <div class="col-sm-6">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ event.title }}</h5>
+                                            <p class="card-text">Date : {{ event.date |truncatechars:12}}</p>
+                                            {% if event.time is not None %}
+                                                <p> Time : {{ event.time }}</p>
+                                            {% endif %}
+                                            {% if event.link %}
+                                                <a href="{{ event.link }}" class="btn btn-primary">Event Link</a>
+                                            {% endif %}
+                                            {% if event.upload_link %}
+                                                <a href="{{ event.upload_link }}" class="btn btn-primary">Event Description</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+            {% endif %}
+        </div>
+
+        <div class="mt-3 flex flex-wrap">
+            {% if current_projects %}
+                <div class="w-full">
+                    <h3 class="text-4xl text-gray-800">Current Projects</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    {% for project in current_projects %}
+                        <div class="col-sm-6">
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ project.title }}</h5>
+                                    <p> Subject: {{ project.subject }}</p>
+                                    <a href="{{ project.link }}" class="btn btn-primary"> Project Link </a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %} 
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mt-3 flex flex-wrap">
+            {% if current_openings %}
+                <div class="w-full">
+                    <h3 class="text-4xl text-gray-800">Current Openings</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    {% for opening in current_openings %}
+                        <div class="col-sm-6">
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ opening.title }}</h5>
+                                    <p class="text-blue-900"> <a href="{{ opening.link }}"> Opening Link </a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %} 
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+  </section>
+</body>
+{% endblock %}

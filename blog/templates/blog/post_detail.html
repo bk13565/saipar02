@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 card mb-4 mt-3 left top">
+        <div class="card-body">
+          <h4 class="">{% block title %} {{ object.title }} {% endblock title %}</h4>
+          {% if post.upload %}
+            <p class="pt-2 pe-5"><a style="text-decoration:none;" href="/{{ post.upload }}/">{{ post.title }}</a></p> 
+          {% endif %}
+          <p class="text-muted">{{ post.author }} | {{ post.created_on }}</p>
+          <p class="card-text">{{ object.content | safe }}</p>
+        </div>
+      </div>
+      {% block sidebar %} 
+      {% include 'blog/sidebar.html' %} 
+      {% endblock sidebar %}
+    </div>
+  </div>
+{% endblock content%}

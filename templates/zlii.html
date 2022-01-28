@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<style>
+    body{
+      background-image: url("./jj-ying-PDxYfXVlK2M-unsplash.jpg")
+    }
+</style>
+
+<body>
+	<div class="container col-md-8">
+    
+		<div class="text-left">
+			<img src="{% static 'images/zlii-logo.png' %}" class="rounded" alt="ZLII">
+		</div>
+        <h4 class="text-dark pb-2"> Zambia Legal Information Institute - ZLII</h4>
+
+		<div>
+			<p>SAIPAR manages the <a style="text-decoration: none;" href="http://zambialii.org/">Zambia Legal Information Institute (ZambiaLII)</a> 
+            website. ZambiaLII provides no-cost access to Zambia’s judgments and legislation, with the aim to make 
+            law more accessible to the public. More specifically, it collects and uploads Laws, Acts, 
+			Statutory Instruments, Court Cases and Law Development Commission Reports.  It has since 
+			received technical support from the African Legal Information Institute (AfricanLII), a 
+			free access to law project operating in South Africa. The AfricanLII and SAFLII websites 
+			serves as a platform for engagement with African national and regional law. In 2012, the 
+			ZamLII website was set up (www.zambialii.org) and is managed by both AfricanLII and SAIPAR.
+			</p>
+		</div>
+
+		<section>
+			<h4>Background</h4>
+
+			<p>The Zambia Legal Information Institute (ZamLII) was set up at University of Zambia 
+			(UNZA)’s Law School in 1996, by Prof Peter Martin.  In 2012, the Southern African Institute
+			 for Policy and Research (SAIPAR) has initiated a revival of ZamLII. It has since received 
+			 technical support from the African Legal Information Institute (AfricanLII), a free access 
+			 to law project operating in South Africa. The AfricanLII website serves as a platform for 
+			 engagement with African national and regional law. In 2012, the ZamLII website 
+			 - <a style="text-decoration: none;" class="" href="http://zambialii.org/">ZambiaLII</a> -  was set up and is managed by both 
+             AfricanLII and SAIPAR.
+			</p>
+
+			<p>The free access to digital legal resources movement started at Cornell University, U.S. 
+			in 1992. The work was carried out by the so-called Legal Information Institute, whose function 
+			is to provide free online access to legal information such as case law, legislation, treaties, 
+			law reform proposals and legal scholarship. The founders were Prof Peter Martin and Prof Thomas 
+			Bruce. The legal information institutes mushroomed around the world and when they assembled in
+			2002 in Montreal, they declared that:
+			</p>
+
+			<ul class="">
+				<li>Public legal information from all countries and international institutions is part of the 
+				common heritage of humanity. Maximizing access to this information promotes justice and the 
+				rule of law;
+				</li>
+				<li>Public legal information is digital common property and should be accessible to all on a 
+				non-profit basis and free of charge;
+				</li>
+				<li>Organizations such as legal information institutes have the right to publish public legal 
+				information and the government bodies that create or control that information should provide 
+				access to it so that it can be published by other parties.
+				</li>
+			<ul>
+		</section>
+	</div>
+</body>
+{% endblock %}

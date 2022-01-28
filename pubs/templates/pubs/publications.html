@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <nav id="navbar-pubs" class="navbar navbar-light align-items-stretch p-3 sticky-top">
+                <a class="navbar-brand pt-5 fs-5" href="#">Publications</a>
+                <nav class="nav nav-pills flex-column">
+                    <ul class="navbar-nav text-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#occasional-papers">Occassional Papers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#discussion-papers">Discussion Papers </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#reports">Policy Briefs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#sajpd">South African Journal Of Policy & Development</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#zssj">Zambia Social Science Journal</a>
+                        </li>                                                                    
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#case-reviews">SAIPAR Case Review</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-info m-1" href="#bookshelf">SAIPAR Bookshelf</a>
+                        </li>
+                    </ul>
+                </nav>
+            </nav>
+        </div>
+
+
+        <div class="container col-9 pt-3">
+
+            <div class="col-11 pt-5 text-dark">
+				The Southern African Institute for Policy and Research disseminates its research
+				and information about its programmes in several including occasional papers,
+				discussion papers, journals etc. Most papers are available as <strong>downloadable PDFs.
+				</strong>
+			</div>
+
+            <div class="pubs">
+                {% if publications %}
+                    <h4 id="occasional-papers" class="pt-2">Occasional Papers</h4>
+					<p class="pe-5">
+                        The Southern African Institute for Policy and Research’s Occasional Papers Series
+                        makes available new research being conducted within the Southern African subregion,
+                        as well as commentary on political, economic, social, and legal issues. Authors are
+                        generally affiliated to SAIPAR, but may also include submissions from other regional
+                        scholars. 
+                    </p>
+
+                    <div class="container">
+                            {% comment %} {{ publications }} {% endcomment %}
+                            {% for yr, papers in publications.items %}
+                                <h4 class="text-dark font-monospace">{{ yr }}</h4>
+                                    <ol class="">
+                                        {% for paper in papers %}
+                                             <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ paper.paper_link }}/">{{ paper.title }}</a>
+                                            </li> 
+                                        {% endfor %}
+                                    </ol>
+                            {% endfor %} 
+                    </div>
+                {% endif %} 
+
+                {% comment %} discussion papers {% endcomment %}
+                {% if discussion_papers %}
+                    <h4 id="discussion-papers" class="pt-2">Discussion Papers</h4>
+					<p class="pe-5">
+                        The Southern African Institute for Policy and Research’s Discussion Papers Series makes 
+                        available new research discussing recent economic, social, and legal issues. The Discussion 
+                        Papers will be distributed widely to other specialists in the research and policy community. 
+                        Authors are generally affiliated to SAIPAR, but may also include submissions from other 
+                        regional scholars.
+                    </p>
+
+                    <div class="container">
+                            {% for yr, papers in discussion_papers.items %}
+                                <h4 class="text-dark font-monospace">{{ yr }}</h4>
+                                    <ol class="">
+                                        {% for paper in papers %}
+                                             <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ paper.paper_link }}/">{{ paper.title }}</a>
+                                            </li> 
+                                        {% endfor %}
+                                    </ol>
+                            {% endfor %} 
+                    </div>
+                {% endif %} 
+
+                {% comment %} reports {% endcomment %}
+                {% if reports %}
+                    <h4 id="reports" class="pt-2">Policy Briefs</h4>
+					<p class="pe-5">
+                        SAIPAR publishes policy briefs aimed at providing an overview of key findings from recent SAIPAR research and publications. 
+                    </p>
+
+                    <div class="container">
+                            {% comment %} {{ publications }} {% endcomment %}
+                            {% for yr, papers in reports.items %}
+                                <h4 class="text-dark font-monospace">{{ yr }}</h4>
+                                    <ol class="">
+                                        {% for paper in papers %}
+                                             <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ paper.paper_link }}/">{{ paper.title }}</a>
+                                            </li> 
+                                        {% endfor %}
+                                    </ol>
+                            {% endfor %} 
+                    </div>
+                {% endif %}
+
+                {% comment %} South African Journal of Policy and Development  {% endcomment %}
+                    <h4 id="sajpd" class="pt-2">South African Journal of Policy and Development</h4>
+					<p class="p-5 text-center ">
+                        COMING SOON!!!
+                    </p>
+                    {% comment %} reports {% endcomment %}
+                {% if zssj %}
+                    <h4 id="zssj" class="pt-2">Zambia Social Science Journal</h4>
+					<p class="pe-5">
+                        The Zambia Social Science Journal is an interdisciplinary, peer-reviewed journal published by 
+                        the Southern African Institute for Policy and Research. The primary objective is to publish 
+                        scholarly work in the social sciences and development. Serving as a forum for argument, debate,
+                        review, reflection, and discussion, the Journal is informed by the results of relevant and 
+                        rigorous research. Articles are welcome from scholars and researchers at all career stages from
+                        within and outside Africa. Articles from any field within the social sciences relevant to Africa
+                        may be submitted.
+                    </p>
+                    <p class="pe-5">
+                        The published papers are anonymously peer reviewed by at least three reviewers. Final 
+                        acceptance or rejection of submitted papers rests with the Editorial Board. The Editorial Board
+                        reserves the right to refuse any material for publication. The Journal is published bi-annually,
+                        with editions coming out in May and November.
+                    </p>
+                    {% comment %} ZSSJ {% endcomment %}
+                    <div class="container">
+                            {% for yr, journals in zssj.items %}
+                                <h4 class="text-dark font-monospace">{{ yr }}</h4>
+                                    <ol class="ms-5">
+                                        {% for journal in journals %}
+                                             <li class="pt-2 pe-5"><a class="text-decoration-none" 
+                                                href="/{{ journal.link }}/">Volume {{ journal.vol }}, Issue #{{ journal.num}} </a>
+                                            </li> 
+                                        {% endfor %}
+                                    </ol>
+                            {% endfor %} 
+
+                        <h6>Editor</h6>
+                            <p class="m-3">Jotham Momba</p>
+                        <h6>Associate Editors</h6>
+                            <p class="m-3">Fay Gadsen, Manenga Ndulo, Caesar Cheelo, Marja Hinfelaar</p>
+                        <h6>Managing Editor</h6>
+                            <p class="m-3">Chewe Nkonde: chewenkonde@gmail.com</p>
+                        <h6>Deputy Managing Editor</h6>
+                            <p class="m-3">Maio Bulawayo</p>
+                        <h6>Editorial Advisory Board</h6>
+                            <p class="m-3">Jessica Achberger, Michigan State University (USA); Kassahun Berhanu, Addis Ababa University (Ethiopia); 
+                            Chaloka Beyani, London School of Economics and Political Science (UK); Nic Cheeseman, Oxford University (UK); 
+                            John Sentamu-Ddumba, Makerere University (Uganda); Marja Hinfelaar, National Archives (Zambia);
+                            Evans Kaimoyo, University of Zambia (Zambia); Steve Kayizzi-Mugerwa, African Development Bank (Tunisia);
+                            Joyce Luma, World Food Programme (Italy); Edwin Maclellan, Cape Breton University (Canada); Mabel Milimo, COMESA Secretariat (Zambia);
+                            Pamela Nakamba-Kabaso, University of Zambia (Zambia); Muna Ndulo, Cornell University (USA); Alistair Nolan, OECD (France);
+                            Bizeck Phiri, University of Zambia (Zambia); Lloyd Sachikonye, University of Zimbabwe (Zimbabwe);
+                            Mohamed Salih, Institute of Social Studies (The Netherlands); Peter Takirrabbude, University of Botswana (Botswana) </p>
+                        <h6>Submission Guidelines</h6>
+                            <p class="m-3"> 
+                            Detailed instructions for authors can be found here: <a style="text-decoration: none;" href="{% static "publications/ZSSJ_Guidelines-for-Authors.pdf" %}">ZSSJ Guidelines for Authors</a>
+                            </p>
+                    </div>
+
+                {% endif %}
+                {% comment %} SAIPAR CASE REVIEWS {% endcomment %}
+                    <h4 id="case-reviews" class="pt-2">SAIPAR Case Reviews</h4>
+					<p class="ps-5">
+                        Please click <a style="text-decoration: none;" href="https://scholarship.law.cornell.edu/scr/">HERE</a> for SAIPAR Case Reviews.
+                    </p>
+
+                {% comment %} SAIPAR Bookshelf {% endcomment %}
+                {% if eBooks or eArticles or print_books %}
+                    <h4 id="bookshelf" class="pt-2"> SAIPAR Bookshelf</h4>
+
+                    {% if eArticles %}
+                        <h6 class="fw-normal ms-4"><i>eArticles for download</i></h6>
+                            <ol class="ms-5">
+                                {% for eArticle in eArticles %}
+                                    <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ eArticle.link }}/">{{ eArticle.title }}</a>
+                                    </li> 
+                                {% endfor %}
+                            </ol>
+                    {% endif %}
+
+                    {% if eBooks %}
+                        <h6 class="fw-normal ms-4"><i>eBooks for download</i></h6>
+                            <ol class="ms-5">
+                                {% for ebook in eBooks %}
+                                    <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ ebook.link }}/">{{ ebook.title }}</a>
+                                    </li> 
+                                {% endfor %}
+                            </ol>
+                    {% endif %}
+
+                    {% if print_books %}
+                        <h6 class="fw-normal ms-4"><i>Printed books for sale</i></h6>
+                            <p class="text-center ps-5 pe-5"><i><b>All print-version SAIPAR books are available at the SAIPAR offices, 
+                            Suite 24 CCZ, Kabulonga, Lusaka, or phone Lister Madubansi +260977700072. All prices are in 
+                            Zambian Kwacha</b></i></p>
+                            <ol class="ms-5">
+                                {% for print_book in print_books %}
+                                    <li class="pt-2 pe-5">
+                                        <i> {{ print_book.title }} - {{ print_book.price }}</i>
+                                    </li> 
+                                {% endfor %}
+                            </ol>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

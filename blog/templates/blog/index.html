@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+
+{% block content %}
+  <style>
+  .masthead {
+            background: #3398E1;
+            height: auto;
+            padding-bottom: 5px;
+            box-shadow: 0 16px 48px #E3E7EB;
+            {% comment %} padding-top: 0px; {% endcomment %}
+        }
+  body {
+      font-family: "Roboto", sans-serif;
+      font-size: 18px;
+      background-color: #fdfdfd;
+  }
+
+  .head_text {
+      color: white;
+  }
+
+  .card {
+      box-shadow: 0 16px 48px #E3E7EB;
+  }
+  </style>
+    <header class="masthead">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h3 class="site-heading my-4 mt-3 text-white">Welcome to SAIPAR Blog</h3>
+                        <p class="text-dark">The SAIPAR Blog is a forum for the analysis of contemporary issues on
+                            the economy, society and politics in the region. The views expressed are those of the 
+                            authors and do not reflect the views of SAIPAR. &nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}}</p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p><a class="btn btn-primary"
+                        href="{% url "blog:post_detail" post.pk %}">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscriber Newsletter</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+            crossorigin="anonymous">
+</head>
+  <body>
+  {% comment %} {% block newsletter %} {% endcomment %}
+  <style>
+        {% comment %} .card{
+          box-shadow: 0 16px 48px #E3E7EB;
+        } {% endcomment %}
+        body {
+		        background-image: radial-gradient(circle farthest-corner at 10% 20%, 
+                rgba(234, 249, 251, 0.63) 0.1%, rgba(239, 249, 251, 0.63) 90.1%);
+	        }
+  </style> 
+
+
+
+    <div class="container h-50 col-md-5">
+        <div class="col-12 m-5 p-5">
+            {% if action == 'confirmed'%}
+            <p> Sign Up Successful : {{ email }} .</p>
+            {% else %}
+            <p> Sign Up Unuccessful : {{ email }} .</p>
+            {% endif %}
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+{% extends "base.html"%}
+{% block content %}
+{% load static %}
+{% load strip_static %}
+
+<div class="container-fluid">
+            <!--main code-->
+    <div class="row">
+        <div class="col-3">
+            <nav id="navbar-pubs" class="navbar navbar-light align-items-stretch p-3 sticky-top">
+                <a class="navbar-brand pt-5 fs-5" href="#">Members</a>
+                <nav class="nav nav-pills flex-column">
+                        <ul class="navbar-nav text-center">
+                            <li class="nav-item">
+                                <a class="nav-link dropdown-toggle text-dark bg-info m-1" href="#fellowships" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Board of Directors
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#executive">Executive Committee</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#audit">Audit Committee</a></li>
+                                    </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1 p-2" href="#iab">International Advisory Board</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1 p-2" href="/people/research-members/">Research</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark bg-info m-1 p-2" href="#staff">Staff</a>
+                            </li>
+                        </ul>
+                </nav>
+            </nav>
+        </div>
+
+        <!--executive_committee-->
+        <div class="container col-9 pt-3">
+            {% if executive_committee or audit_committee %}
+                <h3> Board of Directors <h3>
+            {% endif %}
+
+            {% if executive_committee %}
+                <h5 class="fw-normal ms-3" id="executive"><i> Executive Committee</i> </h5>
+
+                <div class="container row">
+                    {% for person in executive_committee %}
+                        <div class="col-md-4">
+                            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">{{ person.name }}</div>
+                                <div class="card-body text-dark">
+                                    
+                                    <h5 class="card-title">{{ person.title }}</h5>
+                                    {% if person.affiliation %}
+                                        <p class="card-text">{{ person.affiliation }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!--audit_committee-->
+            {% if audit_committee %}
+                <h5 class="fw-normal ms-3" id="audit"><i> Audit Committee</i> </h5>
+
+                <div class="container row">
+                    {% for person in audit_committee %}
+                        <div class="col-md-4">
+                            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">{{ person.name }}</div>
+                                <div class="card-body text-dark">
+                                    <h5 class="card-title">{{ person.title }}</h5>
+                                    <p class="card-text">{{ person.affiliation }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!--international advisory board-->
+            {% if iab_staff %}
+                <h3 id="iab"> International Advisory Board </h3>
+
+                <div class="container row">
+                    {% for person in iab_staff %}
+                        <div class="col-md-4">
+                            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">{{ person.name }}</div>
+                                <div class="card-body text-dark">
+                                    {% comment %} <h5 class="card-title">{{ person.title }}</h5> {% endcomment %}
+                                    <p class="card-text">{{ person.institution }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!--staff-->
+            {% if staff %}
+                <h3 id="staff"> Staff </h3>
+
+                <div class="container row row-cols-1 row-cols-md-3 g-4 pb-3">
+                        {% for person in staff %}
+                            <div class="col">
+                                <div class="card h-100">
+                                    {% if person.image %}
+                                        {% comment %} <img src="{{ person.image.url }}" class="card-img-top" alt="{{ person.name }}"> {% endcomment %}
+                                        <img src="{{ person.image_url|default_if_none:'#' }}" class="img-fluid mb-3" alt="..." />
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ person.name }}</h5>
+                                        <p class="card-text">{{ person.title }}</p>
+                                        {% if person.email %}
+                                            <a class="card-text" style="text-decoration: none;" href="mailto:{{ person.email }}">{{ person.email }}</a>
+                                        {% endif %}
+                                    </div>
+                                </div> 
+                            </div>
+                        {% endfor %}
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+<!--<div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+
+
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
