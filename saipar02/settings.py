@@ -12,19 +12,26 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dotenv
+dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY='django-insecure-a23n&qk3(icg&8rfvpm$v#k*xabsl3^=_y#$yup8+4%^t&b*um'
-DEBUG = True
-ALLOWED_HOSTS=[]
+# SECRET_KEY='django-insecure-a23n&qk3(icg&8rfvpm$v#k*xabsl3^=_y#$yup8+4%^t&b*um'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'django-insecure-a23n&qk3(icg&8rfvpm$v#k*xabsl3^=_y#$yup8+4%^t&b*um'
+
+DEBUG=str(os.environ.get('DEBUG'))=='1'
+
+ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST') ]
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', 
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -85,6 +92,32 @@ DATABASES = {
     }
 }
 
+POSTGRES_DB = os.environ.get("POSTGRES_DB") #database name
+POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD") #database password
+POSTGRES_USER = os.environ.get("POSTGRES_USER") #database user
+POSTGRES_HOST = os.environ.get("POSTGRES_HOST") #database host
+POSTGRES_PORT = os.environ.get("POSTGRES_PORT") #database port
+
+# check environment variables 
+POSTGRES_READY = (
+    POSTGRES_DB is not None
+    and POSTGRES_PASSWORD is not None
+    and POSTGRES_USER is not None
+    and POSTGRES_HOST is not None
+    and POSTGRES_PORT is not None
+)
+
+if POSTGRES_READY:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": POSTGRES_DB,
+            "USER": POSTGRES_USER,
+            "PASSWORD": POSTGRES_PASSWORD,
+            "HOST": POSTGRES_HOST,
+            "PORT": POSTGRES_PORT,
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
