@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # third party apps
+    'storages',
     
     # local apps
     'blog',
@@ -156,6 +157,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles-cdn" # dev example
+
+from cdn.conf import *  # noq
 
 # files served in development 
 STATICFILES_DIRS = [
