@@ -163,11 +163,6 @@
 # https://docs.djangoproject.com/en/3.2/ref/settings/
 # """
 
-# from cdn.conf import *  # noq
-# from cdn import conf
-
-
-
 from pathlib import Path
 import os
 # import dotenv
@@ -179,9 +174,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY='django-insecure-a23n&qk3(icg&8rfvpm$v#k*xabsl3^=_y#$yup8+4%^t&b*um'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'bkn7-nbi+-@3^k*c#^)n0@1w!j&q&!vn^t+0%l!pmn@@lj!35%@c+)'
 
-# DEBUG=str(os.environ.get('DEBUG'))=='1'
-DEBUG=False
+DEBUG=str(os.environ.get('DEBUG'))=='1'
 
+# ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
 ALLOWED_HOSTS = ['*']
 # if not DEBUG:
 #     ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
@@ -327,15 +322,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 # directories with static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "saipar_files"),]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "saipar_files"),]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# S3 bucket
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL')
+AWS_LOCATION = os.environ.get("AWS_LOCATION")
+# AWS_ACCESS_KEY_ID='OMHEYDWO2VYNH33RO2YL' 
+# AWS_SECRET_ACCESS_KEY='wkpfgx9ZDMmm/1J5AGURKPHyOMh7L4T4h2XUgDB8xaI' 
+# AWS_STORAGE_BUCKET_NAME='saipar-static'
+# AWS_S3_ENDPOINT_URL='https://nyc3.digitaloceanspaces.com'
+# AWS_LOCATION='static' 
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'saipar_files'),
+]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

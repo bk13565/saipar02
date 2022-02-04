@@ -6,7 +6,7 @@
         <div class="card-body">
           <h4 class="">{% block title %} {{ object.title }} {% endblock title %}</h4>
           {% if post.upload %}
-            <p class="pt-2 pe-5"><a style="text-decoration:none;" href="/{{ post.upload }}/">{{ post.title }}</a></p> 
+                <p class="pt-2 pe-5"><a style="text-decoration:none;" href="/{{ post.upload }}/">{{ post.title }}</a></p>
           {% endif %}
           <p class="text-muted">{{ post.author }} | {{ post.created_on }}</p>
           <p class="card-text">{{ object.content | safe }}</p>
