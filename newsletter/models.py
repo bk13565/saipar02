@@ -23,7 +23,7 @@ class NewsletterSubscriber(models.Model):
     
 class Newsletter(models.Model):
     subject = models.CharField(max_length=200)
-    contents = models.FileField(upload_to='saipar_files/saipar_newsletters')
+    contents = models.FileField(upload_to='newsletter/saipar_newsletters')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
      

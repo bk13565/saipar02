@@ -27,6 +27,8 @@ DEBUG=str(os.environ.get('DEBUG'))=='1'
 # ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
 if not DEBUG:
     ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
+
+
     
 # Application definition
 
@@ -40,7 +42,6 @@ INSTALLED_APPS = [
     
     # third party apps
     'storages',
-    'rest_framework',
     
     # local apps
     'blog',
@@ -172,6 +173,10 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# STATIC_URL = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = []
+
 # S3 bucket
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -185,7 +190,6 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'saipar_files'),
 ]
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
