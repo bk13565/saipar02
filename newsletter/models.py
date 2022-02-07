@@ -6,8 +6,8 @@ from sendgrid import SendGridAPIClient
 
 # Create your models here.
 class NewsletterSubscriber(models.Model):
-    name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=30, unique=True)
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
     conf_num = models.CharField(max_length=15) # a confirmation number (for valid email addresses)
     confirmed = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -22,7 +22,7 @@ class NewsletterSubscriber(models.Model):
         return  self.name + ":" + self.email + " (" + ("not " if not self.confirmed else "") + "confirmed)"
     
 class Newsletter(models.Model):
-    subject = models.CharField(max_length=100)
+    subject = models.CharField(max_length=200)
     contents = models.FileField(upload_to='saipar_files/saipar_newsletters')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

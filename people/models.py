@@ -26,12 +26,12 @@ COMMITTEE = (
 	
 class Staff(models.Model):
     name = models.CharField(max_length=60)
-    affiliation = models.CharField(max_length=60, blank=True, null=True)
+    affiliation = models.CharField(max_length=100, blank=True, null=True)
     image = models.ImageField(upload_to='images/people', blank=True, null=True)
-    email = models.EmailField(max_length=50, blank=True, null=True)
+    email = models.EmailField(max_length=100, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    institution = models.CharField(max_length=50, blank=True, null=True)
-    title = models.CharField(max_length=50, blank=True, null=True)
+    institution = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField(max_length=100, blank=True, null=True)
     director = models.BooleanField(default=False, null=True)
     committee = models.IntegerField(choices=COMMITTEE, blank=True, null=True)
     International_Advisory_Board = models.BooleanField(default=False, null=True) #international advisory board member

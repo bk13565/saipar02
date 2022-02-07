@@ -15,9 +15,14 @@
                 <div class="container justify-content-center">
                     <ol>
                         {% for project in projects %}
-                            {% with project.link|handlebars as handlebars_tag %}
-                                <li><p><a href="{% static handlebars_tag %}" style="text-decoration: none;">{{ project.project }}</a></p></li>
-                            {% endwith %}
+                            {% if project.link %}
+                                <li><p><a href="{{ project.link }}}" style="text-decoration: none;">{{ project.project }}</a></p></li>
+                            {% endif %}
+                            {% if project.upload_link %}
+                                {% with project.link|handlebars as handlebars_tag %}
+                                    <li><p><a href="{% static handlebars_tag %}" style="text-decoration: none;">{{ project.project }}</a></p></li>
+                                {% endwith %}
+                            {% endif %}
                         {% endfor %}
                     </ol>
                 </div>
