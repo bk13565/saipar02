@@ -26,8 +26,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'bkn7-nbi+-@3^k*c#^)n0@1w!j&
 DEBUG=str(os.environ.get('DEBUG'))=='1'
 
 ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
-# ALLOWED_HOSTS = ['*']
-
 if not DEBUG:
     ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
 
