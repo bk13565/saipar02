@@ -23,12 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY='django-insecure-a23n&qk3(icg&8rfvpm$v#k*xabsl3^=_y#$yup8+4%^t&b*um'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'bkn7-nbi+-@3^k*c#^)n0@1w!j&q&!vn^t+0%l!pmn@@lj!35%@c+)'
 
-DEBUG=str(os.environ.get('DEBUG'))=='1'
+# DEBUG=str(os.environ.get('DEBUG'))=='1'
+DEBUG=True
 
-ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
-if not DEBUG:
-    ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
-
+# ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
+# if not DEBUG:
+#     ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
+ALLOWED_HOSTS=[]
 # Application definition
 
 INSTALLED_APPS = [
@@ -89,49 +90,49 @@ WSGI_APPLICATION = 'saipar02.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-POSTGRES_DB = os.environ.get("POSTGRES_DB") #database name
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD") #database password
-POSTGRES_USER = os.environ.get("POSTGRES_USER") #database user
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST") #database host
-POSTGRES_PORT = os.environ.get("POSTGRES_PORT") #database port
-
-# check environment variables 
-POSTGRES_READY = (
-    POSTGRES_DB is not None
-    and POSTGRES_PASSWORD is not None
-    and POSTGRES_USER is not None
-    and POSTGRES_HOST is not None
-    and POSTGRES_PORT is not None
-)
-
-if POSTGRES_READY:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": POSTGRES_DB,
-            "USER": POSTGRES_USER,
-            "PASSWORD": POSTGRES_PASSWORD,
-            "HOST": POSTGRES_HOST,
-            "PORT": POSTGRES_PORT,
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-    
-# HTTPS Settings 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+}
 
-# HSTS Settings
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_SECONDS = 31556926
-SECURE_HSTS_PRELOAD = True
+# POSTGRES_DB = os.environ.get("POSTGRES_DB") #database name
+# POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD") #database password
+# POSTGRES_USER = os.environ.get("POSTGRES_USER") #database user
+# POSTGRES_HOST = os.environ.get("POSTGRES_HOST") #database host
+# POSTGRES_PORT = os.environ.get("POSTGRES_PORT") #database port
+
+# # check environment variables 
+# POSTGRES_READY = (
+#     POSTGRES_DB is not None
+#     and POSTGRES_PASSWORD is not None
+#     and POSTGRES_USER is not None
+#     and POSTGRES_HOST is not None
+#     and POSTGRES_PORT is not None
+# )
+
+# if POSTGRES_READY:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.postgresql",
+#             "NAME": POSTGRES_DB,
+#             "USER": POSTGRES_USER,
+#             "PASSWORD": POSTGRES_PASSWORD,
+#             "HOST": POSTGRES_HOST,
+#             "PORT": POSTGRES_PORT,
+#         }
+#     }
+    
+# # HTTPS Settings 
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+
+# # HSTS Settings
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_SECONDS = 31556926
+# SECURE_HSTS_PRELOAD = True
 
 
 # Password validation
