@@ -41,7 +41,8 @@ class SubscriberCreateView(generic.CreateView):
             # print('sending email')
             # print(settings.SENDGRID_API_KEY)
 
-            return (request, 'newsletter/subscriber_create.html', {'email': subscriber.email, 'action': 'added', 'form': NewsletterForm()})
+            return (request, 'newsletter/subscriber_create.html', {'email': subscriber.email, 'action': 'added', 'form': NewsletterForm(),
+                                                                   'message': 'Thanks for subscribing!'})
             # return redirect("newsletter:new-subscriber")
         # firsrt time page loading
         else:

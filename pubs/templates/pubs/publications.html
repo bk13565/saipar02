@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-
+{% get_static_prefix as STATIC_PREFIX %}
+{% load handlebars %}
 
 <div class="container-fluid">
     <div class="row">
@@ -58,20 +59,22 @@
                     </p>
 
                     <div class="container">
-                            {% comment %} {{ publications }} {% endcomment %}
+                            <!--{{ publications }}-->  
                             {% for yr, papers in publications.items %}
                                 <h4 class="text-dark font-monospace">{{ yr }}</h4>
                                     <ol class="">
                                         {% for paper in papers %}
-                                             <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ paper.paper_link }}/">{{ paper.title }}</a>
-                                            </li> 
+                                            {% with paper.paper_link|handlebars as handlebars_tag %}
+                                                <li class="pt-2 pe-5"><a class="text-decoration-none" href="{% static handlebars_tag %}">{{ paper.title }}</a>
+                                                </li> 
+                                            {% endwith %}
                                         {% endfor %}
                                     </ol>
                             {% endfor %} 
                     </div>
                 {% endif %} 
 
-                {% comment %} discussion papers {% endcomment %}
+                <!--{{ discussion papers }}-->  
                 {% if discussion_papers %}
                     <h4 id="discussion-papers" class="pt-2">Discussion Papers</h4>
 					<p class="pe-5">
@@ -87,15 +90,17 @@
                                 <h4 class="text-dark font-monospace">{{ yr }}</h4>
                                     <ol class="">
                                         {% for paper in papers %}
-                                             <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ paper.paper_link }}/">{{ paper.title }}</a>
-                                            </li> 
+                                            {% with paper.paper_link|handlebars as handlebars_tag %}
+                                                <li class="pt-2 pe-5"><a class="text-decoration-none" href="{% static handlebars_tag %}">{{ paper.title }}</a>
+                                                </li> 
+                                            {% endwith %}
                                         {% endfor %}
                                     </ol>
                             {% endfor %} 
                     </div>
                 {% endif %} 
 
-                {% comment %} reports {% endcomment %}
+                <!--{{ reports }}--> 
                 {% if reports %}
                     <h4 id="reports" class="pt-2">Policy Briefs</h4>
 					<p class="pe-5">
@@ -108,20 +113,23 @@
                                 <h4 class="text-dark font-monospace">{{ yr }}</h4>
                                     <ol class="">
                                         {% for paper in papers %}
-                                             <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ paper.paper_link }}/">{{ paper.title }}</a>
-                                            </li> 
+                                            {% with paper.paper_link|handlebars as handlebars_tag %}
+                                                <li class="pt-2 pe-5"><a class="text-decoration-none" href="{% static handlebars_tag %}">{{ paper.title }}</a>
+                                                </li> 
+                                            {% endwith %}
                                         {% endfor %}
                                     </ol>
                             {% endfor %} 
                     </div>
                 {% endif %}
 
-                {% comment %} South African Journal of Policy and Development  {% endcomment %}
+                <!--{{ South African Journal of Policy and Development  }}--> 
                     <h4 id="sajpd" class="pt-2">South African Journal of Policy and Development</h4>
 					<p class="p-5 text-center ">
                         COMING SOON!!!
                     </p>
-                    {% comment %} reports {% endcomment %}
+
+                <!-- ZSSJ -->    
                 {% if zssj %}
                     <h4 id="zssj" class="pt-2">Zambia Social Science Journal</h4>
 					<p class="pe-5">
@@ -139,15 +147,17 @@
                         reserves the right to refuse any material for publication. The Journal is published bi-annually,
                         with editions coming out in May and November.
                     </p>
-                    {% comment %} ZSSJ {% endcomment %}
+
                     <div class="container">
                             {% for yr, journals in zssj.items %}
                                 <h4 class="text-dark font-monospace">{{ yr }}</h4>
                                     <ol class="ms-5">
                                         {% for journal in journals %}
-                                             <li class="pt-2 pe-5"><a class="text-decoration-none" 
-                                                href="/{{ journal.link }}/">Volume {{ journal.vol }}, Issue #{{ journal.num}} </a>
-                                            </li> 
+                                            {% with journal.link|handlebars as handlebars_tag %}
+                                                <li class="pt-2 pe-5"><a class="text-decoration-none" 
+                                                    href="{% static handlebars_tag %}">Volume {{ journal.vol }}, Issue #{{ journal.num}} </a>
+                                                </li> 
+                                            {% endwith %}
                                         {% endfor %}
                                     </ol>
                             {% endfor %} 
@@ -176,13 +186,13 @@
                     </div>
 
                 {% endif %}
-                {% comment %} SAIPAR CASE REVIEWS {% endcomment %}
+                <!-- SAIPAR CASE REVIEWS -->
                     <h4 id="case-reviews" class="pt-2">SAIPAR Case Reviews</h4>
 					<p class="ps-5">
                         Please click <a style="text-decoration: none;" href="https://scholarship.law.cornell.edu/scr/">HERE</a> for SAIPAR Case Reviews.
                     </p>
 
-                {% comment %} SAIPAR Bookshelf {% endcomment %}
+                <!-- SAIPAR Bookshelf -->
                 {% if eBooks or eArticles or print_books %}
                     <h4 id="bookshelf" class="pt-2"> SAIPAR Bookshelf</h4>
 
@@ -190,9 +200,11 @@
                         <h6 class="fw-normal ms-4"><i>eArticles for download</i></h6>
                             <ol class="ms-5">
                                 {% for eArticle in eArticles %}
-                                    <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ eArticle.link }}/">{{ eArticle.title }}</a>
-                                    </li> 
-                                {% endfor %}
+                                    {% with eArticle.link|handlebars as handlebars_tag %}                                    
+                                        <li class="pt-2 pe-5"><a class="text-decoration-none" href="{% static handlebars_tag %}">{{ eArticle.title }}</a>
+                                        </li> 
+                                    {% endwith %}
+                                {% endfor %}  
                             </ol>
                     {% endif %}
 
@@ -200,8 +212,10 @@
                         <h6 class="fw-normal ms-4"><i>eBooks for download</i></h6>
                             <ol class="ms-5">
                                 {% for ebook in eBooks %}
-                                    <li class="pt-2 pe-5"><a class="text-decoration-none" href="/{{ ebook.link }}/">{{ ebook.title }}</a>
-                                    </li> 
+                                    {% with ebook.link|handlebars as handlebars_tag %}   
+                                        <li class="pt-2 pe-5"><a class="text-decoration-none" href="{% static handlebars_tag %}">{{ ebook.title }}</a>
+                                        </li>
+                                    {% endwith %} 
                                 {% endfor %}
                             </ol>
                     {% endif %}

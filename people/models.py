@@ -27,7 +27,7 @@ COMMITTEE = (
 class Staff(models.Model):
     name = models.CharField(max_length=60)
     affiliation = models.CharField(max_length=60, blank=True, null=True)
-    image = models.ImageField(upload_to='static/images/people', blank=True, null=True)
+    image = models.ImageField(upload_to='images/people', blank=True, null=True)
     email = models.EmailField(max_length=50, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     institution = models.CharField(max_length=50, blank=True, null=True)

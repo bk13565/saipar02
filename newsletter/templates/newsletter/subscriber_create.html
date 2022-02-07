@@ -12,6 +12,9 @@
     <section class="mb-4">
       <h2 class="fw-bold fs-1">SAIPAR Newsletter </h2>
         <div class="col-md-9 mb-md-0 mb-5">
+            {% if message %}
+                <p class=""> {{ message }}</p>
+            {% endif %}
           <form action="" id="contactform" method="post">
             {% csrf_token %}
             <div class="row">

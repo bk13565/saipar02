@@ -2,13 +2,13 @@ from django.db import models
 
 # Create your models here.
         
-class OcasionalPaperModel(models.Model):
+class OccasionalPaperModel(models.Model):
     pub_date = models.DateField()
     title = models.CharField(max_length=200, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    paper_link = models.FileField(upload_to="static/publications/occassional_papers", blank=True)
-    
+    paper_link = models.FileField(upload_to="publications/occassional_papers", blank=True)
+
     class Meta:
         ordering = ["-pub_date"]
 
@@ -24,7 +24,7 @@ class DiscussionPapersModel(models.Model):
     title = models.CharField(max_length=200, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    paper_link = models.FileField(upload_to="static/publications/discussion_papers", blank=True)
+    paper_link = models.FileField(upload_to="publications/discussion_papers", blank=True)
     
     class Meta:
         ordering = ["-pub_date"]
@@ -42,7 +42,7 @@ class ReportsModel(models.Model):
     title = models.CharField(max_length=200, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    paper_link = models.FileField(upload_to="static/publications/reports_and_policy_briefs", blank=True)
+    paper_link = models.FileField(upload_to="publications/reports_and_policy_briefs", blank=True)
     
     class Meta:
         ordering = ["-pub_date"]
@@ -59,7 +59,7 @@ class ZSSJModel(models.Model):
     pub_date = models.DateField()
     vol = models.IntegerField()
     num = models.IntegerField()
-    link = models.FileField(upload_to="static/publications/zssj", blank=True)
+    link = models.FileField(upload_to="publications/zssj", blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     
@@ -76,7 +76,7 @@ BOOK_TYPE = (
 class SAIPARBookshelfModel(models.Model):
     book_type = models.IntegerField(choices=BOOK_TYPE, blank=True)
     downloadable = models.BooleanField(default=False)
-    link = models.FileField(upload_to="static/publications/SAIPAR_bookshelf", blank=True)
+    link = models.FileField(upload_to="publications/SAIPAR_bookshelf", blank=True)
     price = models.IntegerField(blank=True)
     title = models.CharField(max_length=200, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

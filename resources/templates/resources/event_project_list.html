@@ -1,5 +1,9 @@
 {% extends "base.html"%}
 {% block content %}
+{% load static %}
+{% load handlebars %}
+
+
 <body>
   <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-wrap ">
@@ -22,7 +26,9 @@
                                             <a href="{{ event.link }}" class="btn btn-primary">Event Link</a>
                                         {% endif %}
                                         {% if event.upload_link %}
-                                            <a href="/{{ event.upload_link }}/" class="btn btn-primary">Event Description</a>
+                                            {% with event.upload_link|handlebars as handlebars_tag %}
+                                                <a href="{% static handlebars_tag %}" class="btn btn-primary">Event Description</a>
+                                            {% endwith %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -53,7 +59,9 @@
                                                 <a href="{{ event.link }}" class="btn btn-primary">Event Link</a>
                                             {% endif %}
                                             {% if event.upload_link %}
-                                                <a href="{{ event.upload_link }}" class="btn btn-primary">Event Description</a>
+                                                {% with event.upload_link|handlebars as handlebars_tag %}
+                                                    <a href="{% static handlebars_tag %}" class="btn btn-primary">Event Description</a>
+                                                {% endwith %}
                                             {% endif %}
                                         </div>
                                     </div>
@@ -76,7 +84,14 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ project.title }}</h5>
                                     <p> Subject: {{ project.subject }}</p>
-                                    <a href="{{ project.link }}" class="btn btn-primary"> Project Link </a></p>
+                                    {% if project.link %}
+                                        <a href="{{ project.link }}" class="btn btn-primary"> Project Link </a></p>
+                                    {% endif %}
+                                    {% if project.upload_link %}
+                                        {% with project.upload_link|handlebars as handlebars_tag %}
+                                            <a href="{% static handlebars_tag %}" class="btn btn-primary">Project Description</a>
+                                        {% endwith %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -86,23 +101,35 @@
         </div>
 
         <div class="mt-3 flex flex-wrap">
+            <div class="w-full">
+                <h3 class="text-4xl text-gray-800">Current Openings</h3>
+            </div>
+            <hr>
             {% if current_openings %}
-                <div class="w-full">
-                    <h3 class="text-4xl text-gray-800">Current Openings</h3>
-                </div>
-                <hr>
                 <div class="row">
                     {% for opening in current_openings %}
                         <div class="col-sm-6">
                             <div class="card mb-2">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ opening.title }}</h5>
-                                    <p class="text-blue-900"> <a href="{{ opening.link }}"> Opening Link </a></p>
+                                    {% if opening.link %}
+                                        <p class="text-blue-900"> <a href="{{ opening.link }}"> Opening Link </a></p>
+                                    {% endif %}
+                                    {% if opening.upload_link %}
+                                        {% with opening.upload_link|handlebars as handlebars_tag %}
+                                            <a href="{% static handlebars_tag %}" class="btn btn-primary">Project Description</a>
+                                        {% endwith %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     {% endfor %} 
                 </div>
+            {% else %}
+                <div class="row">
+                    <p class="text-center text-dark" > We have no openings at the moment. Check again soon.</p>
+                </div>
+
             {% endif %}
         </div>
 

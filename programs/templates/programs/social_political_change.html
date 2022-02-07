@@ -1,6 +1,7 @@
 {% extends "base.html"%} 
 {% block content %} 
 {% load static %}
+{% load handlebars %}
 
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -14,9 +15,9 @@
                 <div class="container justify-content-center">
                     <ol>
                         {% for project in projects %}
-                            <li>
-                                <p><a href="{{project.link}}" style="text-decoration: none;">{{ project.project }}</a></p>
-                            </li>
+                            {% with project.link|handlebars as handlebars_tag %}
+                                <li><p><a href="{% static handlebars_tag %}" style="text-decoration: none;">{{ project.project }}</a></p></li>
+                            {% endwith %}
                         {% endfor %}
                     </ol>
                 </div>

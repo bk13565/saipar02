@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
-from .models import OcasionalPaperModel, DiscussionPapersModel, ReportsModel, ZSSJModel, SAIPARBookshelfModel
+from .models import OccasionalPaperModel, DiscussionPapersModel, ReportsModel, ZSSJModel, SAIPARBookshelfModel
 
 # Create your views here.
 class PublicationsView(generic.ListView):
@@ -9,7 +9,7 @@ class PublicationsView(generic.ListView):
     context_object_name = "publications"
     
     def get_queryset(self):
-        queryset = self.ordered_pub_date(OcasionalPaperModel)
+        queryset = self.ordered_pub_date(OccasionalPaperModel)
         return queryset
     
     def ordered_pub_date(self, object):
