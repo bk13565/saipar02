@@ -3,6 +3,7 @@
 {% load static %}
 {% get_static_prefix as STATIC_PREFIX %}
 {% load handlebars %}
+{% load strip_static %}
 
 <div class="container-fluid">
     <div class="row">
@@ -200,7 +201,7 @@
                             <ol class="ms-5">
                                 {% for eArticle in eArticles %}
                                     {% with eArticle.link|handlebars as handlebars_tag %}                                    
-                                        <li class="pt-2 pe-5"><a class="text-decoration-none" href="{% static handlebars_tag %}">{{ eArticle.title }}</a>
+                                        <li class="pt-2 pe-5"><a class="text-decoration-none" href="{% static handlebars_tag|strip_static %}">{{ eArticle.title }}</a>
                                         </li> 
                                     {% endwith %}
                                 {% endfor %}  
