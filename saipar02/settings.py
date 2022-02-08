@@ -27,6 +27,7 @@ DEBUG=str(os.environ.get('DEBUG'))=='1'
 # ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
 if not DEBUG:
     ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOST')]
+
     
 # Application definition
 
