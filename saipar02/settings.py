@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     
     # third party apps
     'storages',
-    
+    'rest_framework',
     # local apps
     'blog',
     'contact',
